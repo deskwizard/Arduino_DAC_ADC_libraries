@@ -1,0 +1,51 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DAC7678	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init 		KEYWORD2
+reset		KEYWORD2
+setVREF		KEYWORD2
+set			KEYWORD2
+enable		KEYWORD2
+clrMode		KEYWORD2
+readChan	KEYWORD2
+readDAC		KEYWORD2
+offMode		KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+## Voltage reference Modes
+EXT 		LITERAL1
+INT 		LITERAL1
+
+
+## Power up / down commands
+ON	  		LITERAL1
+OFF	  		LITERAL1
+
+## Power down modes (new)
+L100K 		LITERAL1
+L1K 		LITERAL1
+HIGHZ 		LITERAL1
+
+## CLR Pin modes
+NOCLR 		LITERAL1
+MID 		LITERAL1
+FULL 		LITERAL1
+ZERO 		LITERAL1
+
+## Channel # to Pin name numbering
+PIN_A 		LITERAL1
+PIN_B 		LITERAL1
+PIN_C 		LITERAL1
+PIN_D 		LITERAL1
+PIN_E 		LITERAL1
+PIN_F 		LITERAL1
+PIN_G 		LITERAL1
+PIN_H 		LITERAL1
