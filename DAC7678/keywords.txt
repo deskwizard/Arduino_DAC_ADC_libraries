@@ -1,0 +1,27 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+DAC7678	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init 		KEYWORD2
+reset		KEYWORD2
+setVREF		KEYWORD2
+setAll		KEYWORD2
+setChan		KEYWORD2
+enableAll	KEYWORD2
+enableChan	KEYWORD2
+clrMode		KEYWORD2
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+EXT LITERAL1
+INT LITERAL1
+ON LITERAL1
+OFF LITERAL1
+FLEX LITERAL1
+STAT LITERAL1
