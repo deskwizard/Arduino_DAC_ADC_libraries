@@ -35,7 +35,7 @@
  
   init(INT)*                  Initialize the ADC and the I2C bus with internal voltage reference. (* Use one or the other)
   init()*                     Initialize the ADC and the I2C bus with external voltage reference. (* Use one or the other)
-  read(channel, SD|DF)        Read the specified ADC channel (0-7) in either single ended (SE) or differential (DF) mode.
+  read(channel, SD|DF)        Read the specified ADC channel (0-7) in either single ended (SD) or differential (DF) mode.
                               Reading a channel will return a value between 0-4095
                               
  ------------------------------------------------------------------------------    
