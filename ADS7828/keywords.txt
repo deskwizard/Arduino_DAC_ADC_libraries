@@ -1,0 +1,20 @@
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+ADS7828	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+init 		KEYWORD2
+setVREF		KEYWORD2
+read		KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+## Voltage reference Modes
+EXT 		LITERAL1
+INT 		LITERAL1
