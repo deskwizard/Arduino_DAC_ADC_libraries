@@ -3,6 +3,7 @@
 #ifndef DAC7678_H
 #define DAC7678_H
 
+#include "Arduino.h"
 #include <Wire.h>
 
 

@@ -1,9 +1,9 @@
 // Library version 0.1e. See example sketch for information, or read down
 // Deskwizard 03/16/2013
-
+#include "Arduino.h"
 #include "DAC7678.h"
 #include "Wire.h"
-#include "Arduino.h"
+
 
 unsigned char off_mode[8]= {0x60,0x60,0x60,0x60,0x60,0x60,0x60,0x60}; // Default off mode to HIGH-Z
 
