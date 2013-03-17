@@ -1,5 +1,5 @@
 /*
- Example sketch for the TI DAC7678 12bits i2C DAC Library
+ Library for the TI DAC7678 12bits i2C DAC 
  Datasheet: http://www.ti.com/lit/ds/symlink/dac7678.pdf
  
  I tried to put as much comment and be clear as possible as I hate examples
@@ -11,7 +11,7 @@
  Deskwizard (03/11/2013)
  
  ------------------------------------------------------------------------------
- Library information -  Current Library version: 0.1e - March 16th 2013
+ Library information -  Current Library version: 0.1g - March 17th 2013
  Tested working on IDE versions 1.0.1, 1.0.2 and 1.0.3
  
  * Internal VREF modes are partially implemented. (Only static mode is implemented)
@@ -47,18 +47,18 @@
  
  Control/Setup Functions
  
- init()                       Initialize the DAC (Initialize I2C bus and send Power-On Reset command)
- reset()                      Send Power-On Reset command to DAC
- offMode((channel,) mode)     Configure Power down mode for specific channel if specified or all channels if only the mode is specified 
- setVREF(INT|EXT)             Sets reference mode to internal (INT) or external (EXT)   (Defaults to EXT) 
- clrMode(Clear_Mode);         Reset all DAC to "Clear_Mode" when CLR pin is brought low (Values: FULL, MID, ZERO, NOCLR)
+ init()                       	Initialize the DAC (Initialize I2C bus and send Power-On Reset command)
+ reset()                      	Send Power-On Reset command to DAC
+ offMode((channel,) mode)     	Configure Power down mode for specific channel if specified or all channels if only the mode is specified 
+ setVREF(INT|EXT)             	Sets reference mode to internal (INT) or external (EXT)   (Defaults to EXT) 
+ clrMode(Clear_Mode);         	Reset all DAC to "Clear_Mode" when CLR pin is brought low (Values: FULL, MID, ZERO, NOCLR)
  
  
  DAC use Functions
  
- set((channel,) value)        Set specified DAC channel to specified value if specified, or all channels if only the value is specified
- enable((channel,) ON|OFF)    Powers ON or OFF the specific DAC Channels if specified, or all channels if only the state is specified.
- readChan(Channel)            Read the current value of the specified DAC channel
+ set((channel,) value)        	Set specified DAC channel to specified value if specified, or all channels if only the value is specified
+ enable((channel,) PWON|PWOFF)  Powers ON or OFF the specific DAC Channels if specified, or all channels if only the state is specified.
+ readChan(Channel)            	Read the current value of the specified DAC channel
  
  Note: The set commands will accept out of range values, but will set the actual DAC to 0 for values under 0
  and 4095 for values over 4095 to prevent unexpected behavior.
@@ -90,10 +90,10 @@ unsigned char off_mode[8]= {0x60,0x60,0x60,0x60,0x60,0x60,0x60,0x60}; // Default
 unsigned char command;  // Command Byte
 unsigned char msdb;     // Most Significant Data Byte
 unsigned char lsdb;		// Least Significant Data Byte	
-int address;		// DAC I2C address
+int adc7678_address;		// DAC I2C address
 
 DAC7678::DAC7678(unsigned char _address){
-  address = _address;   // Set DAC to address passed to function
+  adc7678_address = _address;   // Set DAC to address passed to function
 }
 
 void DAC7678::init(){
@@ -253,10 +253,10 @@ void DAC7678::clrMode(int _value)
 unsigned int DAC7678::readChan(unsigned char _command)
 {
   unsigned int reading = 0;
-  Wire.beginTransmission(address); // Send a start or repeated start command with a slave address and the R/W bit set to '0' for writing.
+  Wire.beginTransmission(adc7678_address); // Send a start or repeated start command with a slave address and the R/W bit set to '0' for writing.
   Wire.write(_command);      // Then send a command byte for the register to be read.
   Wire.endTransmission();
-  Wire.requestFrom(address, 2);
+  Wire.requestFrom(adc7678_address, 2);
   if(2 <= Wire.available())    // if two bytes were received
   {
     reading = Wire.read();  // receive high byte
@@ -270,10 +270,10 @@ unsigned int DAC7678::readChan(unsigned char _command)
 unsigned int DAC7678::readDAC(unsigned char _command)
 {
   unsigned int reading = 0;
-  Wire.beginTransmission(address); // Send a start or repeated start command with a slave address and the R/W bit set to '0' for writing.
+  Wire.beginTransmission(adc7678_address); // Send a start or repeated start command with a slave address and the R/W bit set to '0' for writing.
   Wire.write(_command);      // Then send a command byte for the register to be read.
   Wire.endTransmission();
-  Wire.requestFrom(address, 2);
+  Wire.requestFrom(adc7678_address, 2);
   if(2 <= Wire.available())    // if two bytes were received
   {
     reading = Wire.read();     // receive high byte
@@ -286,7 +286,7 @@ unsigned int DAC7678::readDAC(unsigned char _command)
 
 void DAC7678::transmit(unsigned char _command, unsigned char _msdb, unsigned char _lsdb){
   // Transmit the actual command and high and low bytes to the DAC
-  Wire.beginTransmission(address);
+  Wire.beginTransmission(adc7678_address);
   Wire.write(_command);
   Wire.write(_msdb);
   Wire.write(_lsdb);

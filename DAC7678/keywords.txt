@@ -26,8 +26,8 @@ INT 		LITERAL1
 
 
 ## Power up / down commands
-ON	  		LITERAL1
-OFF	  		LITERAL1
+PWON	  		LITERAL1
+PWOFF	  		LITERAL1
 
 ## Power down modes (new)
 L100K 		LITERAL1

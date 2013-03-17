@@ -1,5 +1,5 @@
 /*
- Example sketch for the TI DAC7678 12bits i2C DAC Library
+ Library for the TI DAC7678 12bits i2C DAC 
  Datasheet: http://www.ti.com/lit/ds/symlink/dac7678.pdf
  
  I tried to put as much comment and be clear as possible as I hate examples
@@ -11,7 +11,7 @@
  Deskwizard (03/11/2013)
  
  ------------------------------------------------------------------------------
- Library information -  Current Library version: 0.1e - March 16th 2013
+ Library information -  Current Library version: 0.1g - March 17th 2013
  Tested working on IDE versions 1.0.1, 1.0.2 and 1.0.3
  
  * Internal VREF modes are partially implemented. (Only static mode is implemented)
@@ -47,18 +47,18 @@
  
  Control/Setup Functions
  
- init()                       Initialize the DAC (Initialize I2C bus and send Power-On Reset command)
- reset()                      Send Power-On Reset command to DAC
- offMode((channel,) mode)     Configure Power down mode for specific channel if specified or all channels if only the mode is specified 
- setVREF(INT|EXT)             Sets reference mode to internal (INT) or external (EXT)   (Defaults to EXT) 
- clrMode(Clear_Mode);         Reset all DAC to "Clear_Mode" when CLR pin is brought low (Values: FULL, MID, ZERO, NOCLR)
+ init()                       	  Initialize the DAC (Initialize I2C bus and send Power-On Reset command)
+ reset()                      	  Send Power-On Reset command to DAC
+ offMode((channel,) mode)     	  Configure Power down mode for specific channel if specified or all channels if only the mode is specified 
+ setVREF(INT|EXT)             	  Sets reference mode to internal (INT) or external (EXT)   (Defaults to EXT) 
+ clrMode(Clear_Mode);         	  Reset all DAC to "Clear_Mode" when CLR pin is brought low (Values: FULL, MID, ZERO, NOCLR)
  
  
  DAC use Functions
  
- set((channel,) value)        Set specified DAC channel to specified value if specified, or all channels if only the value is specified
- enable((channel,) ON|OFF)    Powers ON or OFF the specific DAC Channels if specified, or all channels if only the state is specified.
- readChan(Channel)            Read the current value of the specified DAC channel
+ set((channel,) value)    		  Set specified DAC channel to specified value if specified, or all channels if only the value is specified
+ enable((channel,) PWON|PWOFF)    Powers ON or OFF the specific DAC Channels if specified, or all channels if only the state is specified.
+ readChan(Channel)            	  Read the current value of the specified DAC channel
  
  Note: The set commands will accept out of range values, but will set the actual DAC to 0 for values under 0
  and 4095 for values over 4095 to prevent unexpected behavior.
@@ -83,8 +83,6 @@
 #include "Arduino.h"
 #include <Wire.h>
 
-
-
 // VREF options (Flexible Mode)
 #define EXT 0 // External VREF
 #define INT 1 // Internal VREF
@@ -93,8 +91,8 @@
 #define L100K 0x40
 #define L1K 0x20
 #define HIGHZ 0x60
-#define ON	1
-#define OFF 0
+#define PWON	1
+#define PWOFF 0
 // Clear pin Modes
 #define NOCLR 3
 #define MID 1

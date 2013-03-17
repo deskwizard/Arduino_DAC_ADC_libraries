@@ -5,7 +5,7 @@
  Deskwizard (03/16/2013)
 
  ------------------------------------------------------------------------------
- Library information -  Current Library version: 0.1c - March 16th 2013
+ Library information -  Current Library version: 0.dc - March 16th 2013
  Tested working on IDE version 1.0.3
 
  This is a basic library to use the ADS7828 ADC.
@@ -60,7 +60,7 @@
 #include <Wire.h>                     // Include Wire.h for I2C functionality
 #include <ADS7828.h>                  // Include ADS7828.h for TI ADS7828 functions
 
-ADS7828 adc(0x49);                    // Set the ADC address to 0x49 
+ADS7828 adc(0x49);                    // Set the ADS7828 i2c address to 0x49 (A0 connected to ground, A1 connected to 5v)
 
 
 void setup()
@@ -74,13 +74,13 @@ void loop()
 {
   
   unsigned int read_value = 0;        // Sets/reset the variable for reading DAC to 0
-  unsigned int vref = 4095;           // Set vref value for calculations (set to 2500 for internal reference)
+  unsigned int vref = 4095;           // Sets vref value for calculations (set to 2500 for internal reference)
   float voltage = 0;                  // Sets/reset the variable for voltage caltulations to 0
   
   for(int x = 0; x < 8; x++){                     // Loops from 0 to 7
     
-    read_value = adc.read(x, SD);                 // Read value of ADC channel x in Single-ended mode
-    voltage = read_value * (vref / 4095.0);       // Calculate voltage output according to the voltage reference
+    read_value = adc.read(x, SD);                 // Read value of ADC channel x (0 to 7) in Single-ended mode
+    voltage = read_value * (vref / 4095.0);       // Calculate voltage output value according to the voltage reference and resolution
     
     Serial.print("Channel ");                 // Prints...
     Serial.print(x);                          // Prints channel number
