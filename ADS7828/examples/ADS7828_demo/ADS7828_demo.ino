@@ -35,7 +35,7 @@
  
   init(INT)*                  Initialize the ADC and the I2C bus with internal voltage reference. (* Use one or the other)
   init()*                     Initialize the ADC and the I2C bus with external voltage reference. (* Use one or the other)
-  read(channel, SE|DF)        Read the specified ADC channel (0-7) in either single ended (SE) or differential (DF) mode.
+  read(channel, SD|DF)        Read the specified ADC channel (0-7) in either single ended (SD) or differential (DF) mode.
                               Reading a channel will return a value between 0-4095
                               
  ------------------------------------------------------------------------------    
@@ -79,7 +79,7 @@ void loop()
   
   for(int x = 0; x < 8; x++){                     // Loops from 0 to 7
     
-    read_value = adc.read(x, SE);                 // Read value of ADC channel x in Single-ended mode
+    read_value = adc.read(x, SD);                 // Read value of ADC channel x in Single-ended mode
     voltage = read_value * (vref / 4095.0);       // Calculate voltage output according to the voltage reference
     
     Serial.print("Channel ");                 // Prints...
