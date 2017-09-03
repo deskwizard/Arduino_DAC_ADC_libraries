@@ -83,10 +83,10 @@
 #include <DAC7678.h>                  // Include DAC7678.h for TI DAC7678 functions
 
 DAC7678 dac(0x4C);                    // Set the DAC address to 0x4C or 76 or 0b01001100 (all valid notations of the same address) 
-// See Figure 10, Datasheet page 28 for addresses
+                                      // See Figure 10, Datasheet page 28 for addresses
 
-void setup()
-{
+void setup() {
+  
   Serial.begin(9600);                               // Start Serial 
   Serial.println("Sketch begin");                   // Print welcome message
   Serial.println("Waiting for loop() to start");    // Print welcome message
@@ -97,40 +97,40 @@ void setup()
   dac.setVREF(INT);                   // Configure VREF mode (Not really needed for External as it defaults to External)
   dac.clrMode(ZERO);                  // All Channels will reset to 0 if CLR pin is brought low
 
-  dac.set(2000);                   // Set all powered on channels to 2000/4095
-  dac.set(PIN_A, 140);            // Sets channel 0 to 140/4095
+  dac.set(2000);                      // Set all powered on channels to 2000/4095
+  dac.set(PIN_A, 140);                // Sets channel 0 to 140/4095
 
   delay(5000);                        // wait a little
   dac.offMode(L100K);                 // Sets power off mode for all pins 100K pulldown (Will override previous specific channel settings)
   dac.offMode(PIN_A, HIGHZ);          // Sets power off mode for channel 0 to HIGHZ
-  dac.enable(PIN_A, PWOFF);             // Power down Channel A
-  dac.set(1000);                   // Set all powered on channels to 2000/4095
+  dac.enable(PIN_A, PWOFF);           // Power down Channel A
+  dac.set(1000);                      // Set all powered on channels to 2000/4095
   delay(5000);                        // wait a little
 
-  dac.set(500);                    // Set all powered on channels to 500/4095
-  dac.set(PIN_A, 1500);           // Set Channel F to 1500/4095
-  dac.enable(PIN_A, PWON);              // Power up DAC Channel F
+  dac.set(500);                       // Set all powered on channels to 500/4095
+  dac.set(PIN_A, 1500);               // Set Channel F to 1500/4095
+  dac.enable(PIN_A, PWON);            // Power up DAC Channel F
   delay(5000);                        // wait a little
 }
 
-void loop()
-{
+void loop() {
+  
   int set_value = 0;                  // Sets/reset the variable for setting DAC to 0
   unsigned int read_value = 0;        // Sets/reset the variable for reading DAC to 0
   unsigned int vref = 5000;           // Set vref value for calculations (set to 5000 for internal reference)
   float voltage = 0;                  // Sets/reset the variable for voltage caltulations to 0
 
-  dac.enable(PWOFF);                 // Power down all DAC channels 
+  dac.enable(PWOFF);                  // Power down all DAC channels 
   delay(5000);                        // Wait 5 seconds
 
-  dac.enable(PWON);                  // Power up all DAC Channels
+  dac.enable(PWON);                   // Power up all DAC Channels
   
   for (int x = 0; x < 10; x++){
     set_value = set_value + 400;
 
-    dac.set(set_value);                // write the value to all DAC channels
-    dac.set(5, set_value/2);          // write half the value to DAC channel 5
-    dac.set(PIN_H, set_value/4);      // write a quarter of the value to DAC channel 7
+    dac.set(set_value);                 // write the value to all DAC channels
+    dac.set(5, set_value/2);            // write half the value to DAC channel 5
+    dac.set(PIN_H, set_value/4);        // write a quarter of the value to DAC channel 7
 
     read_value = dac.readDAC(PIN_A);          // Read value of DAC channel 0
     voltage = read_value * (vref / 4095.0);   // Calculate voltage output according to the voltage reference
@@ -142,26 +142,9 @@ void loop()
     Serial.print(" (");
     Serial.print(voltage);                // Prints value of DAC output voltage on channel 0 to serial monitor
     Serial.println(" mV)");               // Prints...
-    delay(2000);                          // Wait 1 second
+    delay(1000);                          // Wait 1 second
   }
   Serial.println("Loop end");
   Serial.println();
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

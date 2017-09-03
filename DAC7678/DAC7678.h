@@ -130,7 +130,7 @@ public:
 	
 	private:
 	void transmit(unsigned char _command, unsigned char _msdb, unsigned char _lsdb);
-
+    int dac7678_address;		// DAC I2C address
 };
 
 #endif
