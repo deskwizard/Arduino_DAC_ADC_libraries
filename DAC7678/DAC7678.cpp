@@ -11,8 +11,7 @@
  Deskwizard (03/11/2013)
  
  ------------------------------------------------------------------------------
- Library information -  Current Library version: 0.1g - March 17th 2013
- Tested working on IDE versions 1.0.1, 1.0.2 and 1.0.3
+ Library information -  Current Library version: 0.1h - September 3rd 2017
  
  * Internal VREF modes are partially implemented. (Only static mode is implemented)
  * All power states are implemented.
