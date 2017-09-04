@@ -2,11 +2,7 @@
  Library for the TI ADS7828 12bits i2C ADC 
  Datasheet: http://www.ti.com/lit/ds/symlink/ads7828.pdf
 
- Deskwizard (03/16/2013)
-
  ------------------------------------------------------------------------------
- Library information -  Current Library version: 0.1d - March 16th 2013
- Tested working on IDE version 1.0.3
 
  This is a basic library to use the ADS7828 ADC.
  
@@ -60,7 +56,6 @@
 #include "ADS7828.h"
 #include "Wire.h"
 
-int ads_address;				// ADC I2C address
 bool ads_vref_int_enabled = 0;  // default voltage reference is external
 
 // command address for the channels, allows 0-7 channel mapping in the correct order

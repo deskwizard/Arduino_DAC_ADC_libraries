@@ -5,8 +5,6 @@
  Deskwizard (03/16/2013)
 
  ------------------------------------------------------------------------------
- Library information -  Current Library version: 0.1d - March 16th 2013
- Tested working on IDE version 1.0.3
 
  This is a basic library to use the ADS7828 ADC.
  
@@ -78,6 +76,9 @@ public:
 	void init();
 	void init(boolean _vref);
 	unsigned int read(unsigned char channel, bool mode);
+
+private:
+    int ads_address;
 	
 };
 
