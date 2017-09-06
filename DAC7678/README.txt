@@ -1,7 +1,7 @@
 Arduino library for TI DAC7678 12bits i2c DAC
 
 ------------------------------------------------------------------------------    
-  Channel naming 
+  Channel naming
   You can use either the number of the pin or the name mentionned here.
  
   Library  |  Chip Pin (Datasheet)
