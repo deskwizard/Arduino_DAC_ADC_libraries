@@ -1,3 +1,11 @@
-# Arduino_DAC_ADC_libraries
+Arduino Libraries for various DACs and ADCs
 
-MADE FOR OLD IDE VERSION - MIGHT REQUIRE CHANGES FOR IDE VERSIONS > 1.0
+Currently supported:
+
+DACs:
+TI DAC7678 12bits i2c DAC
+
+ADCs:
+TI ADS7828 12bits i2c ADC
+
+See library folders for more details on each library.
