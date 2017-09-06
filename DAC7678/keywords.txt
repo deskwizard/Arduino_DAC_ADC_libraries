@@ -7,15 +7,26 @@ DAC7678	KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-init 		KEYWORD2
+begin 		KEYWORD2
 reset		KEYWORD2
 setVREF		KEYWORD2
+LDAC 		KEYWORD2
 set			KEYWORD2
+update		KEYWORD2
+select		KEYWORD2
 enable		KEYWORD2
+disable		KEYWORD2
+enableChannel		KEYWORD2
+disableChannel		KEYWORD2
 clrMode		KEYWORD2
 readChan	KEYWORD2
 readDAC		KEYWORD2
 offMode		KEYWORD2
+
+# DEPRECATED
+init 		KEYWORD2 #replaced by begin
+
+
 #######################################
 # Constants (LITERAL1)
 #######################################
@@ -25,11 +36,11 @@ EXT 		LITERAL1
 INT 		LITERAL1
 
 
-## Power up / down commands
-PWON	  		LITERAL1
-PWOFF	  		LITERAL1
+##
+ENABLE	  		LITERAL1
+DISABLE	  		LITERAL1
 
-## Power down modes (new)
+## Power down modes
 L100K 		LITERAL1
 L1K 		LITERAL1
 HIGHZ 		LITERAL1
