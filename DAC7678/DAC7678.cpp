@@ -134,12 +134,10 @@ void DAC7678::set(unsigned char _channel, int _value) {
   // Set specified channel (0-7) to the specified value
   
   //   Check for out of range values
-  if (_value >= 4096) {
-      _value = 4095; 
-    }
-  if (_value < 0) {
-      _value = 0; 
-    }
+  if (_value >= 4096 || _value < 0) {
+    return;
+  }
+
 
   if (_channel >= 0 || _channel < 8) { // Check for out of range Channel #
     // Sets the variables
@@ -160,12 +158,9 @@ void DAC7678::update(unsigned char _channel, int _value) {
 
   
   //   Check for out of range values
-  if (_value >= 4096) {
-      _value = 4095; 
-    }
-  if (_value < 0) {
-      _value = 0; 
-    }
+  if (_value >= 4096 || _value < 0) {
+    return;
+  }
 
   if (_channel >= 0 || _channel < 8) { // Check for out of range Channel #
     // Sets the variables
