@@ -26,7 +26,7 @@
 
 	setVREF(INT|EXT)               Vref Mode (internal (INT) or external (EXT*)
 
-	clrMode(Clear_Mode);           Configure clear pin
+	clrMode(Clear_Mode)            Configure clear pin
 
 	offMode(mode)                  Configure Power down (All channels)
 
@@ -66,7 +66,7 @@
 The Power off state of the channels have 3 possible states on the DAC7678 and are used as follows:
  
 	HIGHZ 	 -  DAC channel(s) powered OFF, High-Z mode (High Impedance) ** DEFAULT **
-	L1K    -  DAC channel(s) powered OFF, 100K pulldown
+	L1K    -  DAC channel(s) powered OFF, 1K pulldown
 	L100K  -  DAC channel(s) powered OFF, 100K resistor 
  
 
@@ -88,4 +88,8 @@ The settings available for the value sets on all channels when clear pin is brou
 #### LDAC function
 To use the LDAC function, connect the LDAC pin to VCC.
 
-When enabled for a pin, use the `update()` function to update the DAC register without writing to the output. To write to the, the output, use `set()` for the last pin to be written. See the DAC7678_sync example for more details.
+When enabled for a pin, use the `update()` function to update the DAC register without writing to the output. To write to the, the output, use `set()` for the last pin to be written. 
+
+If LDAC is not enabled, `update()` act exactly as `set()`
+
+See the DAC7678_sync example.
