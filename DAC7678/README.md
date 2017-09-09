@@ -22,7 +22,7 @@
 	begin()                        Initialize the DAC
 
 	reset()                        Send Reset command to DAC 
-								   (Same as Power-On reset, called by begin() )
+				       (Same as Power-On reset, called by begin() )
 
 	setVREF(INT|EXT)               Vref Mode (internal (INT) or external (EXT*)
 
@@ -41,11 +41,11 @@
 	disable()                      Disable all channels
 	disable(channel)               Disable single channel
 
-	set(value)    		           Set all channels
-	set(channel, value)    		   Set specified channel
+	set(value)    		       Set all channels
+	set(channel, value)    	       Set specified channel
 
-	update(channel, value)    	   Update Channel 
-								   * See LDAC section below *
+	update(channel, value)         Update Channel 
+				       * See LDAC section below *
 
 	readChan(Channel)              Read DAC channel
    
