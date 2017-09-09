@@ -6,14 +6,18 @@
 
 DAC7678::DAC7678(unsigned char _address) {
   dac7678_address = _address;   // Set DAC to address passed to transmit function
+
+  // Preload HIGH-Z off mode - that way you can change it before begin()
+  for (unsigned char x = 0; x <= 7; x++){
+    off_mode[x] = HIGHZ;
+  }
+
 }
 
 void DAC7678::begin() {
   Wire.begin();   // Initialize I2C Bus
   reset(); 		  // Sends Power-On Reset command to DAC
-  offMode(HIGHZ); // Defaults off mode to high impedance
   disable();      // Make sure outputs are powered off
-     
 }
 
 void DAC7678::setVREF(bool _refstate) {
@@ -98,7 +102,7 @@ void DAC7678::disable() {
 void DAC7678::enableChannel(unsigned char channel) {
   // Enables the specific DAC output channel
   
-  if (channel >= 0 || channel < 8) {
+  if (channel < 8) {
 
     unsigned int x = (unsigned int) (0x20 << channel);  // Channels are offset +5 bits
     unsigned char msdb = (unsigned char)(x >> 8);
@@ -111,7 +115,7 @@ void DAC7678::enableChannel(unsigned char channel) {
 void DAC7678::disableChannel(unsigned char channel) {
   // Disables the specific DAC output channel
   
-  if (channel >= 0 || channel < 8) {
+  if (channel < 8) {
 
     unsigned int x = (unsigned int) (0x20 << channel);  // Channels are offset +5 bits
     unsigned char msdb = (unsigned char)(x >> 8);
@@ -139,7 +143,7 @@ void DAC7678::set(unsigned char _channel, int _value) {
   }
 
 
-  if (_channel >= 0 || _channel < 8) { // Check for out of range Channel #
+  if (_channel < 8) { // Check for out of range Channel #
     // Sets the variables
     unsigned char _command = CMD_IS_LDAC_BASE_ADDR + _channel;
 
@@ -162,7 +166,7 @@ void DAC7678::update(unsigned char _channel, int _value) {
     return;
   }
 
-  if (_channel >= 0 || _channel < 8) { // Check for out of range Channel #
+  if (_channel < 8) { // Check for out of range Channel #
     // Sets the variables
     unsigned char _command = CMD_WRITE_BASE_ADDR + _channel;
 
